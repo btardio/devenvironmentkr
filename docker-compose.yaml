@@ -1,0 +1,20 @@
+services:
+  client:
+    image: krdevclient:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - ./selif:/myapp
+  server:
+    image: krdevserver:latest
+    ports: 
+      - 8000:8000
+      - 9229:9229
+    volumes:
+      - ./selif:/myapp
+  postgres:
+    image: krdevpostgres:latest
+    ports:
+      - 5432:5432
+
+

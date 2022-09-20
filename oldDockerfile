@@ -1,0 +1,33 @@
+FROM node:15.14.0
+#RUN apk add --no-cache wget
+#RUN apk add --no-cache git
+#RUN apk add --no-cache bash
+#RUN apk add --no-cache lynx
+#RUN apk add --no-cache alpine-sdk
+#RUN apk add --no-cache py3-setuptools
+#RUN cd /
+#RUN mkdir node
+#RUN cd node && wget "https://nodejs.org/download/release/v15.14.0/node-v15.14.0-linux-x64.tar.gz"
+#RUN cd node && tar -xzvf node-v15.14.0-linux-x64.tar.gz
+#RUN echo "#!/bin/bash\nexport PATH=$PATH:/node/node-v15.14.0-linux-x64/bin" >> /entryPoint.sh
+#ENV PATH=$PATH:/node/node-v15.14.0-linux-x64/bin
+#RUN chmod +x /entryPoint.sh
+#RUN mkdir /app
+#RUN cd /app && git clone https://github.com/PacktPublishing/Full-Stack-Web-Development-with-GraphQL-and-React-Second-Edition.git
+#RUN cd /app/Full-Stack-Web-Development-with-GraphQL-and-React-Second-Edition/Chapter01 && npm install
+#RUN cd /app/Full-Stack-Web-Development-with-GraphQL-and-React-Second-Edition/Chapter02 && npm install
+#RUN cd /app/Full-Stack-Web-Development-with-GraphQL-and-React-Second-Edition/Chapter03 && npm install
+
+RUN apt-get update
+RUN apt-get -y install lynx
+RUN apt-get -y install telnet
+
+WORKDIR /myapp/Full-Stack-Web-Development-with-GraphQL-and-React-Second-Edition/Chapter01/
+RUN pwd && ls
+RUN pwd && ls
+RUN pwd && ls
+WORKDIR /
+
+COPY ./runscript.sh /runscript.sh
+RUN chmod +x /runscript.sh
+ENTRYPOINT ["/myapp/runscript.sh"]
